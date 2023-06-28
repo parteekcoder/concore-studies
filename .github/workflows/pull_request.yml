@@ -28,4 +28,4 @@ jobs:
         run: |
           gh pr create --repo ${{ github.event.inputs.botRepo }}/${{ github.event.inputs.repo }} --head ${{ github.ref }} --base ${{ github.event.inputs.upstreamRepo }}:main --title "${{ github.event.inputs.title }}" --body "${{ github.event.inputs.body }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.token }}
+          GH_TOKEN: ${{ secrets.token }}
