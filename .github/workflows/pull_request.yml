@@ -10,12 +10,9 @@ on:
         description: 'description of example'
         required: true
       upstreamRepo:
-        description: 'Upstream repo'
+        description: 'Upstream repo name'
         required: true
-      botRepo:
-        description: 'bot repo'
-        required: true
-      repo:
+      account:
         description: 'repo name'
         required: true
 
@@ -26,6 +23,6 @@ jobs:
     steps:
       - name: Create PR
         run: |
-          gh pr create --repo ${{ github.event.inputs.upstreamRepo }}/${{ github.event.inputs.repo }} --head ${{ github.event.inputs.botRepo }}:${{ github.ref }} --base main --title "${{ github.event.inputs.title }}" --body "${{ github.event.inputs.body }}"
+          gh pr create --repo ${{ github.event.inputs.account }}/${{ github.event.inputs.upstreamRepo }} --head ${{ github.event.inputs.account }}:${{ github.ref }} --base main --title "${{ github.event.inputs.title }}" --body "${{ github.event.inputs.body }}"
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
